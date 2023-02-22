@@ -1,9 +1,13 @@
 package model
 
-import "time"
+import (
+	"gorm.io/gorm"
+	"time"
+)
 
 type User struct {
-	Email          string
+	gorm.Model
+	Email          string     `gorm:"unique"`
 	PasswordDigest string     //密码加密后的密文
 	Gender         string     //性别
 	Birthday       *time.Time //生日
